@@ -43,10 +43,9 @@ class Board:
 
     def init_pieces(self):
         c = "black"
-        pieces = [Rook(self.screen, c), Knight(self.screen, c), Bishop(self.screen, c), Queen(self.screen, c), King(
-                self.screen, c), Bishop(self.screen, c), Knight(self.screen, c), Rook(self.screen, c)]
+        pieces = [Rook(c), Knight(c), Bishop(c), Queen(c), King(c), Bishop(c), Knight(c), Rook(c)]
 
-        pawns = [Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c)]
+        pawns = [Pawn(c),Pawn(c),Pawn(c),Pawn(c),Pawn(c),Pawn(c),Pawn(c),Pawn(c)]
 
         for i, (square,piece) in enumerate(zip(self.board[0],pieces)):
             square.update({"piece":piece})
@@ -57,10 +56,9 @@ class Board:
             piece.position = (1,i)
 
         c = "white"
-        pieces = [Rook(self.screen, c), Knight(self.screen, c), Bishop(self.screen, c), Queen(self.screen, c), King(
-                self.screen, c), Bishop(self.screen, c), Knight(self.screen, c), Rook(self.screen, c)]
+        pieces = [Rook(c), Knight(c), Bishop(c), Queen(c), King(c), Bishop(c), Knight(c), Rook(c)]
 
-        pawns = [Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c),Pawn(self.screen, c)]
+        pawns = [Pawn(c),Pawn(c),Pawn(c),Pawn(c),Pawn(c),Pawn(c),Pawn(c),Pawn(c)]
 
         for i,(square,piece) in enumerate(zip(self.board[-1],pieces[::-1])):
             square['piece'] = piece
