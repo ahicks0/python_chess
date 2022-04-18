@@ -1,6 +1,5 @@
 import sys
 import pygame
-from matplotlib.pyplot import get
 import time
 from board import Board
 from pieces import PIECE_SIZE, King

@@ -1,4 +1,3 @@
-from cmath import pi
 from typing import Tuple
 import pygame
 from pygame import Rect, Surface
