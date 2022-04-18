@@ -40,6 +40,13 @@ class Board:
                     pygame.draw.rect(self.screen, col[square % 2], r)
             self.board.append(tmp)
 
+    def draw_pieces(self, exc=None):
+        for lines in self.board:
+            for square in lines:
+                if square['piece'] is not None and square['piece'] is not exc :
+                    self.screen.blit(square['piece'].piece, (square['left'] + 0.5*(self.SQUARE_SIZE -
+                                PIECE_SIZE[0]), square['top'] + 0.5*(self.SQUARE_SIZE - PIECE_SIZE[1])))
+
     def init_pieces(self):
         c = "black"
         pieces = [Rook(c), Knight(c), Bishop(c), Queen(c), King(c), Bishop(c), Knight(c), Rook(c)]

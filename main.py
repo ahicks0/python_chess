@@ -26,9 +26,6 @@ textRect = text.get_rect()
  
 # set the center of the rectangular object.
 textRect.center = (200,200)
- 
-
-speed = [2, 2]
 
 infoObject = pygame.display.Info()
 size = width, height = (infoObject.current_w, infoObject.current_h-60)
@@ -39,20 +36,13 @@ board.draw()
 board.init_pieces()
 #print(board.board)
 
-def draw_pieces(exc=None):
-    for lines in board.board:
-        for square in lines:
-            if square['piece'] is not None and square['piece'] is not exc :
-                screen.blit(square['piece'].piece, (square['left'] + 0.5*(board.SQUARE_SIZE -
-                            PIECE_SIZE[0]), square['top'] + 0.5*(board.SQUARE_SIZE - PIECE_SIZE[1])))
-
 def wasPieceSelected():
     try:
         return selected_piece is not None
     except NameError:
         return False
 
-draw_pieces()
+board.draw_pieces()
 dragging_piece = False
 turn = ["white", "black"]
 while 1:
@@ -87,7 +77,8 @@ while 1:
                     selected_piece.position = (row_pos, col_pos)
                     selected_piece.initial = False
                     turn = turn[::-1]
-                draw_pieces()
+                board.draw_pieces()
+
             selected_piece = None
             selected_square = None
 
@@ -99,7 +90,7 @@ while 1:
             board.draw(moves)
 
             # Draw all pieces except one held
-            draw_pieces(selected_piece)
+            board.draw_pieces(selected_piece)
 
             # Draw held piece centered under cursor
             screen.blit(selected_piece.piece, (int(mouse_pos_px[0]-0.5*PIECE_SIZE[0]), int(mouse_pos_px[1]-0.5*PIECE_SIZE[1])))
