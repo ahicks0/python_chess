@@ -1,27 +1,10 @@
 import sys
 import pygame
 import time
+from random import randint
 from board import Board
 from pieces import PIECE_SIZE, King
-from random import randint
-
-
-def isMouseOnBoard(mouse_pos, board: Board):
-    return mouse_pos[0] < board.border[0] + board.width and mouse_pos[0] > board.border[0] and \
-        mouse_pos[1] < board.border[1] + \
-        board.height and mouse_pos[1] > board.border[1]
-
-
-def getSquare(pos, board: Board):
-    row_pos = int((pos[0]-board.border[0])//board.SQUARE_SIZE)
-    col_pos = int((pos[1]-board.border[1])//board.SQUARE_SIZE)
-    return row_pos, col_pos
-
-def wasPieceSelected():
-    try:
-        return selected_piece is not None
-    except NameError:
-        return False
+from utils import *
 
 pygame.init()
 
@@ -62,6 +45,12 @@ def draw_pieces(exc=None):
             if square['piece'] is not None and square['piece'] is not exc :
                 screen.blit(square['piece'].piece, (square['left'] + 0.5*(board.SQUARE_SIZE -
                             PIECE_SIZE[0]), square['top'] + 0.5*(board.SQUARE_SIZE - PIECE_SIZE[1])))
+
+def wasPieceSelected():
+    try:
+        return selected_piece is not None
+    except NameError:
+        return False
 
 draw_pieces()
 dragging_piece = False
